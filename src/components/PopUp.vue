@@ -94,7 +94,7 @@
             <div class="content__box-row1">
               <div class="content__col">
                 <h4 class="label label--big">Actors</h4>
-                <ul class="content__actors">
+                <ul class="content__text">
                   <li
                       class="content__actor"
                       v-for="actor in filmData.Actors"
@@ -107,37 +107,33 @@
             <div class="content__box-row1">
               <div class="content__col">
                 <h4 class="label label--big">Awards</h4>
-                <p class="content__awards">{{ filmData.Awards }}</p>
+                <p class="content__text">{{ filmData.Awards }}</p>
               </div>
             </div>
             <div class="content__box-row1">
               <div class="content__col">
-                <h4 class="label label--small">Release Date</h4>
-                <p class="content__text">{{ filmData.Released }}</p>
-              </div>
-              <div class="content__col">
-                <h4 class="label label--small">Production</h4>
-                <p class="content__text">{{ filmData.Production }}</p>
-              </div>
-              <div class="content__col">
-                <h4 class="label label--small">Country</h4>
+                <h4 class="label label--big">Country</h4>
                 <p class="content__text">{{ filmData.Country }}</p>
               </div>
               <div class="content__col">
-                <h4 class="label label--small">Language</h4>
+                <h4 class="label label--big">Language</h4>
                 <p class="content__text">{{ filmData.Language }}</p>
               </div>
               <div class="content__col">
-                <h4 class="label label--small">Box Office</h4>
+                <h4 class="label label--big">Box Office</h4>
                 <p class="content__text">{{ filmData.BoxOffice }}</p>
+              </div>
+              <div class="content__col">
+                <h4 class="label label--big">Release Date</h4>
+                <p class="content__text">{{ filmData.Released }}</p>
               </div>
             </div>
           </div>
-          <button class="popup__back btn js-close">back</button>
         </div>
+        <button class="popup__back btn js-close">back</button>
       </div>
-      <Loader v-if="!ajax" class="popup"/>
     </div>
+    <Loader v-if="!ajax" class="popup"/>
   </div>
 </template>
 
@@ -218,6 +214,9 @@ export default {
         }
       }
 
+      console.log(this.filmData);
+      if (this.filmData.Writer === "N/A") this.filmData.Writer = "-";
+      if (this.filmData.Actors === "N/A") this.filmData.Actors = "-";
       if (this.filmData.BoxOffice === "N/A") this.filmData.BoxOffice = "-";
       if (this.filmData.Production === "N/A") this.filmData.Production = "-";
       if (this.filmData.Runtime === "N/A") this.filmData.Runtime = "-";
