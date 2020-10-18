@@ -80,15 +80,15 @@ export default {
 
   created() {
     let hash = window.location.hash.substring(1);
+    console.log(hash);
     if (hash) {
       hash = hash.split("&");
       this.filmName = decodeURI(hash[0]);
       this.filmYear = hash[1];
-      this.filmType = hash[2];
-      if (hash[3]) {
+      if (hash[2]) {
         setTimeout(() => {
           this.PopUpClass = "show";
-          this.filmID = hash[3];
+          this.filmID = hash[2];
         }, 50);
       }
     }
@@ -102,12 +102,12 @@ export default {
     handlePopUp(value) {
       this.PopUpClass = value;
       this.filmID = "";
-      window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmType}&`;
+      window.location.hash = `${this.filmName}&${this.filmYear}&`;
     },
     handleFilm(event) {
       this.PopUpClass = "show";
       this.filmID = event.target.closest(".films__film").dataset.id;
-      window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmType}&${this.filmID}`;
+      window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmID}`;
     },
     getNewMovies() {
       this.films = [];
@@ -140,9 +140,9 @@ export default {
               }
             }
             if (this.filmID == "") {
-              window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmType}&`;
+              window.location.hash = `${this.filmName}&${this.filmYear}&`;
             } else {
-              window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmType}&${this.filmID}`;
+              window.location.hash = `${this.filmName}&${this.filmYear}&${this.filmID}`;
             }
             this.ajax = true;
 
