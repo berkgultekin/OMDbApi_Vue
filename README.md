@@ -4,10 +4,11 @@ movie.
 
 This project uses OMDb API to retrieve movie information.
 
-#Project Setup
+# Project Setup
 npm install
 
-#Compiles and hot-reloads for development
+# Compiles and hot-reloads for development
 npm run serve
 
-#Live Demo
+# Live Demo
+https://omdbapi-vue.web.app
